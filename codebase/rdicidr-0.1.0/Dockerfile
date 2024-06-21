@@ -1,21 +1,20 @@
 FROM node:15 as builder
 
-WORKDIR
+# Set working directory
+WORKDIR /app
 
-COPY
+# Copy package files
+COPY package.json /app/package.json
+COPY package-lock.json /app/package-lock.json
 
-RUN 
+# Same as npm install
+RUN npm ci
 
-COPY
+COPY . /app
 
-RUN 
+ENV CI=true
+ENV PORT=3000
 
-FROM
+EXPOSE 3000
 
-WORKDIR
-
-COPY
-
-RUN 
-
-ENTRYPOINT 
+CMD [ "npm", "start" ]
