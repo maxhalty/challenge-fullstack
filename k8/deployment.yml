@@ -17,12 +17,19 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: fullstack:v1
+        #image: fullstack:v1
+        image: 924450925338.dkr.ecr.us-east-1.amazonaws.com/development-images:fullstack-v1
         env:
         - name: MY_SECRET 
           valueFrom:
             secretKeyRef:
               name: nginx
               key: mysecret
+        resources:
+          requests:
+            memory: "2G"
+            cpu: "1"
+          limits:
+            memory: "2.5G"
         ports:
         - containerPort: 3000
